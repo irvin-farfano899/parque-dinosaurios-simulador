@@ -5,55 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParqueService {
-    private List<Dinosaurio> dinosaurios = new ArrayList<>();
+    private List<Dinosaurio> listaDinosaurios = new ArrayList<>();
 
-    // 1. Registrar
-    public void registrarDinosaurio(Dinosaurio dino) {
-        dinosaurios.add(dino);
-        System.out.println("🦖 " + dino.getNombre() + " (" + dino.getEspecie() + ") ha sido asignado a su hábitat.");
+    public void registrarDinosaurio(Dinosaurio d) {
+        listaDinosaurios.add(d);
     }
 
-    // 2. Listar
     public List<Dinosaurio> listarDinosaurios() {
-        return dinosaurios;
+        return listaDinosaurios;
     }
 
-    // 3. Modificar (¡Requerido por la rúbrica!)
-    public boolean modificarDinosaurio(Long id, String nuevoNombre, String nuevaEspecie, boolean nuevoEsCarnivoro) {
-        for (Dinosaurio dino : dinosaurios) {
-            if (dino.getId().equals(id)) {
-                dino.setNombre(nuevoNombre);
-                dino.setEspecie(nuevaEspecie);
-                dino.setEsCarnivoro(nuevoEsCarnivoro);
-                return true; // Modificación exitosa
+    public boolean modificarDinosaurio(Long id, String nuevoNombre, String nuevaEspecie, boolean esCarnivoro) {
+        for (Dinosaurio d : listaDinosaurios) {
+            if (d.getId().equals(id)) {
+                d.setNombre(nuevoNombre);
+                d.setEspecie(nuevaEspecie);
+                d.setEsCarnivoro(esCarnivoro);
+                return true;
             }
         }
-        return false; // No se encontró
+        return false;
     }
 
-    // 4. Eliminar (¡Requerido por la rúbrica!)
     public boolean eliminarDinosaurio(Long id) {
-        return dinosaurios.removeIf(dino -> dino.getId().equals(id));
-    }
-
-    // 5. Simular Día
-    public void simularDia() {
-        System.out.println("\n=======================================");
-        System.out.println("🌅 INICIANDO RECORRIDO DIARIO DEL PARQUE");
-        System.out.println("=======================================");
-
-        if (dinosaurios.isEmpty()) {
-            System.out.println("⚠️ El parque está vacío. No hay dinosaurios que simular.");
-            return;
-        }
-
-        for (Dinosaurio dino : dinosaurios) {
-            if (dino.isEsCarnivoro()) {
-                System.out.println("🍖 " + dino.getNombre() + " [" + dino.getEspecie() + "] está rugiendo y buscando carne.");
-            } else {
-                System.out.println("🌿 " + dino.getNombre() + " [" + dino.getEspecie() + "] está pastando tranquilamente en el prado.");
-            }
-        }
-        System.out.println("=======================================\n");
+        return listaDinosaurios.removeIf(d -> d.getId().equals(id));
     }
 }

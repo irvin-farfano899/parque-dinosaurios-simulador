@@ -1,0 +1,6 @@
+[ {
+  "id" : 1,
+  "nombre" : "Rey T-Rex",
+  "especie" : "Tiranosaurio Imponente",
+  "esCarnivoro" : true
+} ]
